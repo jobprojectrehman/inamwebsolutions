@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Category } from '../components/prices'
@@ -16,6 +17,11 @@ const Prices = () => {
 
   return (
     <Wrapper>
+      <Helmet>
+        <title>Price</title>
+        <meta name='description' content='Find all prices.' />
+        <link rel='canonical' href='/product' />
+      </Helmet>
       {category.map((item, index) => {
         return (
           <div className='container' key={index}>
