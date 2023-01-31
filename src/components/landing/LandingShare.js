@@ -51,9 +51,11 @@ const Wrapper = styled.div`
   display: grid;
   h1 {
     margin-left: 0;
+    color: var(--primary-9);
   }
   p {
     font-size: 1.2rem;
+    color: var(--primary-7);
   }
 
   .box-mobile {
