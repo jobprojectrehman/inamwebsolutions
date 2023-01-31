@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   margin: 1rem auto;
   background: var(--white);
   .image {
-    background: var(--grey-4);
+    background: var(--primary-5);
     border-top-left-radius: var(--radius-2);
     border-top-right-radius: var(--radius-2);
   }
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     width: 80vw;
     height: 30vh;
     object-fit: contain;
-    border-bottom: 2px solid var(--primary-5);
+    border-bottom: 2px solid var(--primary-9);
   }
   .body {
     margin-top: -8px;
