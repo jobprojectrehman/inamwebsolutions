@@ -141,7 +141,7 @@ const Wrapper = styled.div`
       span {
         font-size: 4rem;
 
-        color: var(--grey-7);
+        color: var(--primary-5);
       }
     }
   }
@@ -153,14 +153,21 @@ const Wrapper = styled.div`
     max-width: 80vw;
     margin: 0 auto;
     .name {
+      strong {
+        color: var(--primary-5);
+      }
       p {
         margin: 0;
+        color: var(--primary-7);
       }
     }
   }
   .star {
     text-align: center;
     min-width: 100px;
+    strong {
+      color: var(--primary-5);
+    }
   }
   .body {
     box-shadow: var(--shadow-2);
@@ -186,10 +193,16 @@ const Wrapper = styled.div`
       }
       .body-title-reviews {
         padding-left: 1.5rem;
+        strong {
+          color: var(--primary-5);
+        }
       }
     }
-  }
-  .body-description {
+    .body-description {
+      p {
+        color: var(--primary-7);
+      }
+    }
   }
 
   @media (max-width: 620px) {
