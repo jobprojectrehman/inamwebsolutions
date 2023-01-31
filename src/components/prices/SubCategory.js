@@ -6,7 +6,7 @@ const SubCategory = ({ item, products }) => {
   const subCategoryProducts = products.filter(
     (items) => items.subCategory === item
   )
-  console.log(item)
+
   return (
     <Wrapper>
       <h5 className='title'>{item}</h5>
