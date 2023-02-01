@@ -106,6 +106,7 @@ const Profile = () => {
             onChange={handleChange}
           />
           {/* Date of birth input */}
+          {/*  */}
           <FormInput
             label={'Date Of Birth'}
             type={'date'}
