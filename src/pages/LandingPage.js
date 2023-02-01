@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
+import { GoogleMaps } from '../components/GoogleMaps'
 import {
   LandingNewProducts,
   LandingFeatureProduct,
@@ -25,6 +26,7 @@ const LandingPage = () => {
       <LandingNewProducts />
       <LandingShare landingPage={sectionThree} />
       <GoogleReviews />
+      <GoogleMaps />
     </>
   )
 }

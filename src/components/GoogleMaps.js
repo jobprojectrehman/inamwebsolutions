@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
+import { useSelector } from 'react-redux'
 
-export default function Home() {
+export const GoogleMaps = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   })
@@ -11,10 +12,18 @@ export default function Home() {
 }
 
 function Map() {
-  const center = useMemo(() => ({ lat: 43.44495, lng: -80.48592 }), [])
+  const { contentContacts } = useSelector((state) => state.websiteContent)
 
+  const lat = Number(
+    contentContacts.googleLocation?.split('@')[1].split(',')[0]
+  )
+  const lng = Number(
+    contentContacts.googleLocation?.split('@')[1].split(',')[1]
+  )
+  const center = { lat, lng }
+  console.log(typeof Number(lng))
   return (
-    <GoogleMap zoom={12} center={center} mapContainerClassName='map-container'>
+    <GoogleMap zoom={16} center={center} mapContainerClassName='map-container'>
       <MarkerF position={center} />
       {/* SHow street View on Map */}
       {/* <StreetViewPanorama position={center} /> */}
