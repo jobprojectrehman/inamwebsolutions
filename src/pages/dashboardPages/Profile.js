@@ -110,7 +110,7 @@ const Profile = () => {
             label={'Date Of Birth'}
             type={'date'}
             name={'dateOfBirth'}
-            value={state.dateOfBirth.split('T')[0]}
+            value={state.dateOfBirth?.split('T')[0]}
             onChange={handleChange}
           />
           {/* Email input */}
