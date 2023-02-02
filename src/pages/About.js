@@ -19,7 +19,7 @@ const About = () => {
         <link rel='canonical' href='/about' />
       </Helmet>
       <Wrapper>
-        {/* headings */}
+        {/* headings page*/}
         <div className='box-1'>
           <div className='heading'>
             <h1 className='title'>{title}</h1>
