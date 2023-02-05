@@ -1,14 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { formatPrice } from '../../utils/helper'
 
 const SubCategoryHolder = ({ subCategoryProducts }) => {
+  const navigate = useNavigate()
+
+  const handleClick = (_id) => {
+    navigate(`/products/${_id}`)
+  }
   return (
     <Wrapper>
       {subCategoryProducts.map((item, index) => {
         return (
           <div key={index}>
-            <div className='box-holder'>
+            <div onClick={() => handleClick(item._id)} className='box-holder'>
               <span className='box-1'> {item.title}</span>
               <div className='box-2'>
                 <div>
@@ -42,6 +48,11 @@ const Wrapper = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     align-items: center;
+    transition: var(--transition-1);
+    :hover {
+      cursor: pointer;
+      box-shadow: var(--shadow-3);
+    }
   }
   .box-1 {
   }
