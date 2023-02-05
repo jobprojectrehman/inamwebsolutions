@@ -31,6 +31,10 @@ const LandingFeatureProduct = () => {
                   <img
                     src={item.uploadImage[0].secure_url}
                     alt={item.category}
+                    title={item.category}
+                    loading='lazy'
+                    width='100%'
+                    height='100%'
                   />
                 </div>
                 <div className='container-paragraph'>

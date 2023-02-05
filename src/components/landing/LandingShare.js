@@ -32,7 +32,11 @@ const LandingShare = ({ landingPage, heading }) => {
         {heading === 3 && <h3>{landingPage?.heading}</h3>}
         <img
           src={landingPage?.uploadImage[0]?.secure_url}
-          alt='Inam web Solutions'
+          alt={landingPage?.heading}
+          title={landingPage?.heading}
+          loading='lazy'
+          width='100%'
+          height='100%'
         />
         <p>{landingPage?.paragraph}</p>
         <Link to={'/products'} className='btn'>
@@ -42,7 +46,11 @@ const LandingShare = ({ landingPage, heading }) => {
       <div className='box box-desktop'>
         <img
           src={landingPage?.uploadImage[0]?.secure_url}
-          alt='computerPicture'
+          alt={landingPage?.heading}
+          title={landingPage?.heading}
+          loading='lazy'
+          width='100%'
+          height='100%'
         />
       </div>
     </Wrapper>

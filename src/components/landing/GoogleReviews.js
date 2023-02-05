@@ -65,6 +65,10 @@ const GoogleReviews = () => {
           <img
             src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'
             alt='Google Reviews'
+            title='Google Reviews'
+            loading='lazy'
+            width='auto'
+            height='auto'
           />
           <span>Rating</span>
         </div>
@@ -92,6 +96,10 @@ const GoogleReviews = () => {
             <img
               src={state.reviews[state.index]?.profile_photo_url}
               alt={state.reviews[state.index]?.author_name}
+              title={state.reviews[state.index]?.author_name}
+              loading='lazy'
+              width='100%'
+              height='100%'
             />
           </div>
           <div className='body-title-reviews'>
