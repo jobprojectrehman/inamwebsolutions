@@ -32,7 +32,7 @@ const LandingNewProducts = () => {
                     src={item.uploadImage[0].secure_url}
                     alt={item.category}
                     title={item.category}
-                    loading='lazy'
+                    loading='eager'
                     width='100%'
                     height='100%'
                   />
