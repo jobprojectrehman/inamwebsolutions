@@ -1,14 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { getStateValues } from '../../features/product/productSlice'
 
 const LandingNewProducts = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { newProducts } = useSelector((state) => state.product)
 
-  const handleClick = (id) => {
-    navigate(`/products/${id}`)
+  const handleClick = (category) => {
+    navigate(`/products`)
+    dispatch(getStateValues({ name: 'searchCategory', value: category }))
   }
   return (
     <Wrapper>
@@ -23,7 +26,7 @@ const LandingNewProducts = () => {
           .map((item, index) => {
             return (
               <div
-                onClick={() => handleClick(item._id)}
+                onClick={() => handleClick(item.category)}
                 className='container-holder'
                 key={index}
               >

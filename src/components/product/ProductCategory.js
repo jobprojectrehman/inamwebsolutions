@@ -6,7 +6,7 @@ import ScrollHook from '../../hooks/ScrollHook'
 
 const ProductCategory = () => {
   const dispatch = useDispatch()
-  const { category, categoryIndex } = useSelector((state) => state.product)
+  const { category, searchCategory } = useSelector((state) => state.product)
 
   const handleCategory = (e) => {
     ScrollHook()
@@ -30,7 +30,7 @@ const ProductCategory = () => {
               <button
                 onClick={() => handleActive(index)}
                 type='button'
-                className={categoryIndex === index ? 'btn active' : 'btn'}
+                className={item === searchCategory ? 'btn active' : 'btn'}
                 value={item}
               >
                 {item}
