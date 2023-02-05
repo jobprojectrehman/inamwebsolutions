@@ -35,7 +35,7 @@ const SocialMedia = () => {
   ]
   return (
     <Wrapper className='boxDesign'>
-      <h3 className='title'>Follow us</h3>
+      <div className='title'>Follow us</div>
       <ul>
         {socialIcons.map((item) => {
           return (
@@ -51,6 +51,9 @@ const SocialMedia = () => {
   )
 }
 const Wrapper = styled.div`
+  .title {
+    font-size: 2rem;
+  }
   a {
     display: flex;
     align-items: center;

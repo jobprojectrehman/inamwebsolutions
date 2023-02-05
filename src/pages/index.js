@@ -1,4 +1,3 @@
-import About from './About'
 import Cart from './Cart'
 import Contact from './Contact'
 import ErrorPage from './ErrorPage'
@@ -12,7 +11,6 @@ export {
   SharedLayout,
   LandingPage,
   ErrorPage,
-  About,
   Contact,
   ProtectedRoute,
   SharedDashboardLayout,

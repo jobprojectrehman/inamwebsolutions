@@ -13,7 +13,14 @@ const ProductDesign = ({ item }) => {
             <strong>{item.title}</strong>
           </p>
           <div className='img-container'>
-            <img src={image} alt='' />
+            <img
+              src={image}
+              alt={item.title}
+              title={item.title}
+              loading='lazy'
+              width='100%'
+              height='100%'
+            />
           </div>
         </div>
       </Link>

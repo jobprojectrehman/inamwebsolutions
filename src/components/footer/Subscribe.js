@@ -21,7 +21,7 @@ const Subscribe = () => {
 
   return (
     <Wrapper className='boxDesign'>
-      <h3 className='title'>News letter</h3>
+      <div className='title'>News letter</div>
       <p>Receive updates on the latest news and Offers.</p>
       <form className='subscribe-form' onSubmit={handleSubmit}>
         <input type='text' ref={emailInput} />
@@ -33,6 +33,9 @@ const Subscribe = () => {
   )
 }
 const Wrapper = styled.div`
+  .title {
+    font-size: 2rem;
+  }
   p,
   h3 {
     padding: 0 1rem;

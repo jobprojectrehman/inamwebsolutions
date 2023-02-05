@@ -40,7 +40,7 @@ const Address = () => {
   ]
   return (
     <Wrapper className='boxDesign'>
-      <h3 className='title'>Contact US</h3>
+      <div className='title'>Contact US</div>
       {address.map((item) => {
         return (
           <div key={item.id}>
@@ -55,6 +55,9 @@ const Address = () => {
   )
 }
 const Wrapper = styled.div`
+  .title {
+    font-size: 2rem;
+  }
   p,
   a {
     margin: 0;

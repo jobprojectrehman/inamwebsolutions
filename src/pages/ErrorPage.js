@@ -12,7 +12,7 @@ const ErrorPage = () => {
         </button>
       </div>
 
-      <img src={image} alt='' />
+      <img src={image} alt='Error no page found.' />
     </Wrapper>
   )
 }

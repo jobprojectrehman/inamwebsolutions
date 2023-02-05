@@ -88,54 +88,62 @@ const StripeProfile = ({ setShowCart }) => {
       <h3 className='title'>Confirm your profile </h3>
       <div className='title-underline'></div>
       <form className='form' onSubmit={handleSubmit}>
-        {/* name input */}
-        <FormInput
-          label={'First Name'}
-          name={'name'}
-          value={state.name}
-          onChange={handleChange}
-        />
-        {/* last name input */}
-        <FormInput
-          label={'Last Name'}
-          name={'lastName'}
-          value={state.lastName}
-          onChange={handleChange}
-        />
-        {/* Email input */}
-        <FormInput name={'email'} value={state.email} onChange={handleChange} />
-        {/* phone input */}
-        <FormInput
-          type={'number'}
-          name={'phone'}
-          value={state.phone}
-          onChange={handleChange}
-        />
-        {/* Address input */}
-        <FormInput
-          name={'address'}
-          value={state.address}
-          onChange={handleChange}
-        />
-        {/* City input */}
-        <FormInput name={'city'} value={state.city} onChange={handleChange} />
-        {/* province input */}
-        <FormInput
-          name={'province'}
-          value={state.province}
-          onChange={handleChange}
-        />
-        {/* postalCode input */}
-        <FormInput
-          label={'postal code'}
-          name={'postalCode'}
-          value={state.postalCode}
-          onChange={handleChange}
-        />
+        <div className='box-1'>
+          {/* name input */}
+          <FormInput
+            label={'First Name'}
+            name={'name'}
+            value={state.name}
+            onChange={handleChange}
+          />
+          {/* last name input */}
+          <FormInput
+            label={'Last Name'}
+            name={'lastName'}
+            value={state.lastName}
+            onChange={handleChange}
+          />
+          {/* Email input */}
+          <FormInput
+            name={'email'}
+            value={state.email}
+            onChange={handleChange}
+          />
+          {/* phone input */}
+          <FormInput
+            type={'number'}
+            name={'phone'}
+            value={state.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className='box-2'>
+          {/* Address input */}
+          <FormInput
+            name={'address'}
+            value={state.address}
+            onChange={handleChange}
+          />
+          {/* City input */}
+          <FormInput name={'city'} value={state.city} onChange={handleChange} />
+          {/* province input */}
+          <FormInput
+            name={'province'}
+            value={state.province}
+            onChange={handleChange}
+          />
+          {/* postalCode input */}
+          <FormInput
+            label={'postal code'}
+            name={'postalCode'}
+            value={state.postalCode}
+            onChange={handleChange}
+          />
 
-        <button type='submit' className='btn'>
-          Next
-        </button>
+          <button type='submit' className='btn'>
+            Next
+          </button>
+        </div>
       </form>
     </Wrapper>
   )

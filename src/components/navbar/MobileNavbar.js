@@ -81,7 +81,7 @@ const MobileNavbar = () => {
 }
 
 const Wrapper = styled.nav`
-  background-color: var(--grey-2);
+  background-color: var(--white);
   height: 3.2rem;
   position: fixed;
   top: 0;
@@ -112,7 +112,7 @@ const Wrapper = styled.nav`
     margin-left: -600px;
 
     ul {
-      background-color: var(--grey-2);
+      background-color: var(--white);
       width: 60vw;
       height: 100vh;
       li {

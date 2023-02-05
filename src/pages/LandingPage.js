@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
-import { GoogleMaps } from '../components/GoogleMaps'
+// import { GoogleMaps } from '../components/GoogleMaps'
 import {
   LandingNewProducts,
   LandingFeatureProduct,
@@ -20,13 +20,13 @@ const LandingPage = () => {
         <meta name='description' content={sectionOne?.paragraph} />
         <link rel='canonical' href='/' />
       </Helmet>
-      <LandingShare landingPage={sectionOne} />
+      <LandingShare landingPage={sectionOne} heading={1} />
       <LandingFeatureProduct />
-      <LandingShare landingPage={sectionTwo} />
+      <LandingShare landingPage={sectionTwo} heading={2} />
       <LandingNewProducts />
-      <LandingShare landingPage={sectionThree} />
+      <LandingShare landingPage={sectionThree} heading={3} />
       <GoogleReviews />
-      <GoogleMaps />
+      {/* <GoogleMaps /> */}
     </>
   )
 }

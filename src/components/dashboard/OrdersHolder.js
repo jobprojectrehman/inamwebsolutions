@@ -42,7 +42,7 @@ const OrdersHolder = () => {
                   {images.map((item, index) => {
                     return (
                       <div key={index}>
-                        <img src={item[0].secure_url} alt='' />
+                        <img src={item[0].secure_url} alt='Order' />
                       </div>
                     )
                   })}

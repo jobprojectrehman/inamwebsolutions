@@ -7,7 +7,6 @@ import {
   SharedLayout,
   LandingPage,
   ErrorPage,
-  About,
   Contact,
   ProtectedRoute,
   SharedDashboardLayout,
@@ -28,6 +27,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { websiteContentThunk } from './features/websiteContent/websiteContentSlice'
 import { getProductThunk } from './features/product/productSlice'
+import { AboutUs, SingleAboutUs } from './pages/aboutUsPages'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -79,8 +79,8 @@ const App = () => {
           {/* =======Dashboard======== */}
           <Route path='changepassword/:id' element={<ForgetPassword />} />
           <Route path='verify/:id' element={<VerifyUser />} />
-          <Route path='about' element={<About />} />
-          <Route path='products' element={<Products />} />
+          <Route path='about' element={<AboutUs />} />
+          <Route path='about/:_id' element={<SingleAboutUs />} />
           <Route path='products' element={<Products />} />
           <Route path='products/:_id' element={<SingleProduct />} />
           <Route path='prices' element={<Prices />} />

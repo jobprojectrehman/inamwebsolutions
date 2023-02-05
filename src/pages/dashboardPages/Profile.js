@@ -106,12 +106,11 @@ const Profile = () => {
             onChange={handleChange}
           />
           {/* Date of birth input */}
-          {/*  */}
           <FormInput
             label={'Date Of Birth'}
             type={'date'}
             name={'dateOfBirth'}
-            value={state.dateOfBirth?.split('T')[0]}
+            value={state.dateOfBirth.split('T')[0]}
             onChange={handleChange}
           />
           {/* Email input */}

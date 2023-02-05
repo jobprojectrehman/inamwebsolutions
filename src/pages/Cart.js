@@ -43,7 +43,7 @@ const Cart = () => {
           <tr className='heading'>
             <th>IMAGE</th>
             <th>NAME</th>
-            <th>QUANTITY</th>
+            <th>ITEMS</th>
             <th>PRICE</th>
             <th className='action'>ACTION</th>
           </tr>
@@ -52,7 +52,7 @@ const Cart = () => {
             return (
               <tr key={index}>
                 <td className='img'>
-                  <img src={item.uploadImage[0].secure_url} alt='' />
+                  <img src={item.uploadImage[0].secure_url} alt='Cart' />
                 </td>
                 <td className='name-box'>
                   <span>{item.title}</span>
@@ -166,10 +166,19 @@ const Wrapper = styled.div`
     border: 2px solid var(--grey-3);
   }
   @media (max-width: 600px) {
+    padding: 0px;
+    margin: 0 auto;
+    width: 400px;
+    table {
+    }
+    .heading {
+      width: 400px;
+    }
     .quantity {
       display: grid;
-
       justify-content: space-evenly;
+      width: 5px;
+      margin: 0 auto;
 
       button {
         padding: 2px;
@@ -185,6 +194,12 @@ const Wrapper = styled.div`
     }
 
     padding-top: 0px;
+    .total {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 400px) {
   }
 `
 

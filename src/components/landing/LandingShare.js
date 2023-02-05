@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const url =
   'https://res.cloudinary.com/inam6530/image/upload/v1667055870/inamwebsolutions/Untitled_design_qebmwe.svg'
 
-const LandingShare = ({ landingPage }) => {
+const LandingShare = ({ landingPage, heading }) => {
   if (!landingPage) {
     return (
       <Wrapper>
@@ -27,7 +27,9 @@ const LandingShare = ({ landingPage }) => {
   return (
     <Wrapper>
       <div className='box box-mobile'>
-        <h1>{landingPage?.heading}</h1>
+        {heading === 1 && <h1>{landingPage?.heading}</h1>}
+        {heading === 2 && <h2>{landingPage?.heading}</h2>}
+        {heading === 3 && <h3>{landingPage?.heading}</h3>}
         <img
           src={landingPage?.uploadImage[0]?.secure_url}
           alt='Inam web Solutions'
@@ -51,11 +53,9 @@ const Wrapper = styled.div`
   display: grid;
   h1 {
     margin-left: 0;
-    color: var(--primary-9);
   }
   p {
     font-size: 1.2rem;
-    color: var(--primary-7);
   }
 
   .box-mobile {

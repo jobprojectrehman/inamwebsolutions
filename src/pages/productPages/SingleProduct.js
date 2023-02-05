@@ -85,7 +85,7 @@ const SingleProduct = () => {
             {singleProductImages?.map((item, index) => {
               return (
                 <div onClick={() => handleIndex(index)} key={index}>
-                  <img src={item.secure_url} alt='' />
+                  <img src={item.secure_url} alt='product ' />
                 </div>
               )
             })}

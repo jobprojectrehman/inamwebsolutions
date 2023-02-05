@@ -18,15 +18,19 @@ const Prices = () => {
   return (
     <Wrapper>
       <Helmet>
-        <title>Price</title>
-        <meta name='description' content='Find all prices.' />
-        <link rel='canonical' href='/product' />
+        <title>Prices</title>
+        <meta name='description' content='All Products Prices.' />
+        <link rel='canonical' href='/about' />
       </Helmet>
+      <div className='h1'>
+        <h1 className='title'>Product's Price list</h1>
+      </div>
+      <div className='title-underline'></div>
       {category.map((item, index) => {
         return (
           <div className='container' key={index}>
-            <h3 className='title header'> {item}</h3>
-            <div className='title-underline'></div>
+            <div className='title header'> {item}</div>
+
             <Category category={item} products={products} />
           </div>
         )
@@ -36,15 +40,22 @@ const Prices = () => {
 }
 const Wrapper = styled.div`
   display: grid;
-
+  .h1 {
+    background-color: var(--primary-1);
+    h1 {
+      font-size: 2rem;
+    }
+  }
   .container {
     margin: 1rem;
     background-color: var(--grey-2);
     box-shadow: var(--shadow-2);
     border-radius: var(--radius);
-    padding: 1rem;
+
     .header {
       text-transform: uppercase;
+      font-size: 1.2rem;
+      margin-bottom: 10;
     }
   }
 

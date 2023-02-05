@@ -52,7 +52,7 @@ const SingleOrder = () => {
           return (
             <div className='name-image' key={index}>
               <p>{names}</p>
-              <img src={item.uploadImage[0].secure_url} alt='' />
+              <img src={item.uploadImage[0].secure_url} alt={names} />
             </div>
           )
         })}

@@ -17,7 +17,7 @@ const CheckOut = () => {
   const [clientSecret, setClientSecret] = useState('')
   // eslint-disable-next-line
   const [stripePromise, setStripePromise] = useState(() =>
-    loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_API_KEY)
+    loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
   )
 
   const getClientSecret = async () => {

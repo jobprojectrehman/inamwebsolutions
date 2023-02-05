@@ -9,6 +9,7 @@ import {
   registerUserThunk,
 } from '../../features/user/userSlice'
 import ForgetPassword from '../../components/user/ForgetPassword'
+import { Helmet } from 'react-helmet-async'
 
 const Register = () => {
   const dispatch = useDispatch()
@@ -59,6 +60,11 @@ const Register = () => {
   }
   return (
     <Wrapper>
+      <Helmet>
+        <title>Register/Login</title>
+        <meta name='description' content='' />
+        <link rel='canonical' href='/about' />
+      </Helmet>
       {user.forgetPassword ? (
         <ForgetPassword />
       ) : (

@@ -13,7 +13,9 @@ const LandingNewProducts = () => {
   return (
     <Wrapper>
       <div className='container-header'>
-        <h3 className='title'>New Arrivals</h3>
+        <div className='title'>
+          New <span>Services</span>
+        </div>
         <div className='title-underline'></div>
       </div>
       <div className='container'>
@@ -26,7 +28,10 @@ const LandingNewProducts = () => {
                 key={index}
               >
                 <div className='container-image'>
-                  <img src={item.uploadImage[0].secure_url} alt='' />
+                  <img
+                    src={item.uploadImage[0].secure_url}
+                    alt={item.category}
+                  />
                 </div>
                 <div className='container-paragraph'>
                   <p>{item.category}</p>
@@ -48,6 +53,14 @@ const Wrapper = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    span {
+      color: var(--primary-5);
+    }
   }
   .container-holder {
     max-width: 280px;

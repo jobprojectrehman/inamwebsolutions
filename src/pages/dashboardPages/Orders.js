@@ -27,7 +27,7 @@ const Orders = () => {
       {ordersList.length > 0 ? null : (
         <div className='empty-cart'>
           <h3>Your cart is empty.</h3>
-          <img src={emptyCart} alt='' />
+          <img src={emptyCart} alt='Your cart is empty.' />
         </div>
       )}
 
