@@ -16,7 +16,7 @@ const Logo = () => {
       <img
         src={image ? image : url}
         alt='Logo'
-        loading='lazy'
+        loading='eager'
         title='Logo'
         width='100%'
         height='100%'

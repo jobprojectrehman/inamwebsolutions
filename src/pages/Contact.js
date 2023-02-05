@@ -105,7 +105,14 @@ const Contact = () => {
         </form>
         <div className='contactImage'>
           <div className='address'></div>
-          <img src={image} alt='contactUs' />
+          <img
+            src={image}
+            alt={'Contact Us'}
+            title={'Contact Us'}
+            loading='eager'
+            width='100%'
+            height='100%'
+          />
         </div>
       </Wrapper>
     </>
