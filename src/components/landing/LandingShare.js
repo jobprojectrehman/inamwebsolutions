@@ -35,8 +35,8 @@ const LandingShare = ({ landingPage, heading }) => {
           alt={landingPage?.heading}
           title={landingPage?.heading}
           loading='lazy'
-          width='100%'
-          height='100%'
+          width='300px'
+          height='300px'
         />
         <p>{landingPage?.paragraph}</p>
         <Link to={'/products'} className='btn'>
