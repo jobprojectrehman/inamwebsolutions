@@ -48,10 +48,12 @@ const AboutUs = () => {
 const Wrapper = styled.div`
   display: grid;
   .box-1 {
-    padding: 2rem;
     h1 {
       padding-top: 1.5rem;
       font-size: 2rem;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      max-width: 500px;
     }
     p {
       margin: 1rem auto;
