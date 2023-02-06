@@ -44,6 +44,8 @@ const Wrapper = styled.div`
     background-color: var(--primary-1);
     h1 {
       font-size: 2rem;
+      margin-top: 0px;
+      color: var(--primary-7);
     }
   }
   .container {

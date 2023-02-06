@@ -38,6 +38,10 @@ const Products = () => {
         <link rel='canonical' href='/product' />
       </Helmet>
       <ProductCategory />
+      <div className='h1'>
+        <h1 className='title'>Find your favorite product</h1>
+        <div className='title-underline'></div>
+      </div>
       <Search />
       <List />
       <Pagination />
@@ -47,7 +51,16 @@ const Products = () => {
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 61px);
-
+  .h1 {
+    margin-bottom: 5px;
+    margin-top: -18px;
+    background-color: var(--primary-1);
+    h1 {
+      margin-top: 0px;
+      font-size: 2rem;
+      color: var(--primary-7);
+    }
+  }
   /* ====Product */
   .product-holder {
     display: flex;
