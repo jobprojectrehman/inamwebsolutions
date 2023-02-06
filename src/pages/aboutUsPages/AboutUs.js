@@ -57,6 +57,7 @@ const Wrapper = styled.div`
     }
     p {
       margin: 1rem auto;
+      padding: 1rem;
     }
   }
   /* Team Members */
