@@ -73,7 +73,7 @@ const Wrapper = styled.div`
     justify-items: center;
 
     img {
-      max-width: 300px;
+      width: 300px !important;
     }
   }
   .box-desktop {
