@@ -76,6 +76,7 @@ const Search = () => {
               type='checkbox'
               name='feature'
               value={feature}
+              checked={feature}
               onChange={() => dispatch(handleFeature())}
               id=''
             />
