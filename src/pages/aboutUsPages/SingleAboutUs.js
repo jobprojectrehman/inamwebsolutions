@@ -11,7 +11,7 @@ const SingleAboutUs = () => {
   return (
     <Wrapper>
       <div className='box-1'>
-        <img src={person?.uploadImage[0]?.secure_url} alt={person.name} />
+        <img src={person?.uploadImage[0]?.secure_url} alt={person?.name} />
       </div>
       <div className='box-2'>
         <div className='heading'>

@@ -1,9 +1,18 @@
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
+import GooglePlacesHook from '../../hooks/GooglePlacesHook'
 import { customFetch } from '../../utils/axios'
 import FormInput from '../FormInput'
+const genderValue = [
+  'male',
+  'female',
+  'transgender',
+  'non-binary/non-conforming',
+  'prefer not to respond',
+]
 
 const initialState = {
   user: [],
@@ -12,9 +21,12 @@ const initialState = {
   lastName: '',
   email: '',
   phone: '',
-  address: '',
+  apartment: '',
+  house: '',
+  street: '',
   city: '',
   province: '',
+  country: '',
   postalCode: '',
   updatedAt: '',
   createdAt: '',
@@ -28,7 +40,7 @@ const StripeProfile = ({ setShowCart }) => {
     e.preventDefault()
     if (
       !state.phone ||
-      !state.address ||
+      !state.street ||
       !state.city ||
       !state.province ||
       !state.postalCode
@@ -85,10 +97,19 @@ const StripeProfile = ({ setShowCart }) => {
   }
   return (
     <Wrapper>
-      <h3 className='title'>Confirm your profile </h3>
-      <div className='title-underline'></div>
+      <div className='dates'>
+        <p>
+          Created At{' '}
+          <strong>{moment(state.createdAt).format('MMM Do YY')}</strong>
+        </p>
+        <p>
+          Last updated{' '}
+          <strong>{moment(state.updatedAt).format('MMM Do YY')}</strong>
+        </p>
+      </div>
+      <h1 className='title'>Please Confirm your Details</h1>
       <form className='form' onSubmit={handleSubmit}>
-        <div className='box-1'>
+        <div className='profile'>
           {/* name input */}
           <FormInput
             label={'First Name'}
@@ -103,6 +124,31 @@ const StripeProfile = ({ setShowCart }) => {
             value={state.lastName}
             onChange={handleChange}
           />
+          {/* Date of birth input */}
+          <FormInput
+            label={'Date Of Birth'}
+            type={'date'}
+            name={'dateOfBirth'}
+            value={state.dateOfBirth?.split('T')[0]}
+            onChange={handleChange}
+          />
+          {/* gender */}
+          <div className='gender'>
+            <label htmlFor='gender'>Gender</label>
+            <select name='gender' value={state?.gender} onChange={handleChange}>
+              {genderValue.map((item, index) => {
+                return (
+                  <option
+                    select={state?.gender?.toString()}
+                    key={index}
+                    value={item}
+                  >
+                    {item}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
           {/* Email input */}
           <FormInput
             name={'email'}
@@ -113,42 +159,76 @@ const StripeProfile = ({ setShowCart }) => {
           <FormInput
             type={'number'}
             name={'phone'}
-            value={state.phone}
+            value={state.phone === null ? '' : state.phone}
             onChange={handleChange}
           />
         </div>
+        {/* ====================Box Divider=============*/}
         <div className='box-2'>
-          {/* Address input */}
+          <GooglePlacesHook state={state} setState={setState} />
+          <div className='box-2-inline'>
+            {/* apartment  */}
+            <FormInput
+              name='apartment'
+              label={'Apartment Number'}
+              placeholder={'#'}
+              value={state?.apartment}
+              onChange={handleChange}
+            />
+            {/* houseNo/buildingNo  */}
+            <FormInput
+              name='house'
+              placeholder={'#'}
+              label={'House / Building #'}
+              value={state?.house}
+              onChange={handleChange}
+            />
+          </div>
+          {/* street*/}
           <FormInput
-            name={'address'}
-            value={state.address}
+            name='street'
+            label={'Street Address'}
+            value={state?.street}
             onChange={handleChange}
           />
-          {/* City input */}
-          <FormInput name={'city'} value={state.city} onChange={handleChange} />
-          {/* province input */}
-          <FormInput
-            name={'province'}
-            value={state.province}
-            onChange={handleChange}
-          />
-          {/* postalCode input */}
-          <FormInput
-            label={'postal code'}
-            name={'postalCode'}
-            value={state.postalCode}
-            onChange={handleChange}
-          />
+          <div className='box-2-inline'>
+            {/* city  */}
+            <FormInput
+              name='city'
+              value={state?.city}
+              onChange={handleChange}
+            />
+            {/* province */}
+            <FormInput
+              name='province'
+              value={state?.province}
+              onChange={handleChange}
+            />
+          </div>
+          {/* country */}
+          <div className='box-2-inline'>
+            <FormInput
+              name='country'
+              value={state?.country}
+              onChange={handleChange}
+            />
+            {/* postalCode */}
+            <FormInput
+              name='postalCode'
+              label='Postal Code'
+              value={state?.postalCode}
+              onChange={handleChange}
+            />
+          </div>
 
-          <button type='submit' className='btn'>
-            Next
+          <button className='btn' type='submit'>
+            Submit
           </button>
         </div>
       </form>
     </Wrapper>
   )
 }
-
 const Wrapper = styled.div`
   .dates {
     display: flex;
@@ -158,6 +238,15 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
+  select,
+  input {
+    text-transform: capitalize;
+  }
+  .gender {
+    padding: 5px 0;
+    display: grid;
+  }
+
   @media (min-width: 600px) {
     form {
       display: grid;
@@ -165,6 +254,11 @@ const Wrapper = styled.div`
       gap: 1rem;
       min-width: 800px;
     }
+  }
+  .box-2-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
   }
 `
 

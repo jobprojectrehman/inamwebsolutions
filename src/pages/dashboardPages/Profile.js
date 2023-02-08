@@ -5,18 +5,30 @@ import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import { customFetch } from '../../utils/axios'
 import FormInput from '../../components/FormInput'
+import GooglePlacesHook from '../../hooks/GooglePlacesHook'
+const genderValue = [
+  'male',
+  'female',
+  'transgender',
+  'non-binary/non-conforming',
+  'prefer not to respond',
+]
 
 const initialState = {
   user: [],
   isLoading: false,
   name: '',
   lastName: '',
+  gender: '',
   dateOfBirth: '',
   email: '',
   phone: '',
-  address: '',
+  apartment: '',
+  house: '',
+  street: '',
   city: '',
   province: '',
+  country: '',
   postalCode: '',
   updatedAt: '',
   createdAt: '',
@@ -110,9 +122,26 @@ const Profile = () => {
             label={'Date Of Birth'}
             type={'date'}
             name={'dateOfBirth'}
-            value={state.dateOfBirth.split('T')[0]}
+            value={state.dateOfBirth?.split('T')[0]}
             onChange={handleChange}
           />
+          {/* gender */}
+          <div className='gender'>
+            <label htmlFor='gender'>Gender</label>
+            <select name='gender' value={state?.gender} onChange={handleChange}>
+              {genderValue.map((item, index) => {
+                return (
+                  <option
+                    select={state?.gender?.toString()}
+                    key={index}
+                    value={item}
+                  >
+                    {item}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
           {/* Email input */}
           <FormInput
             name={'email'}
@@ -127,31 +156,66 @@ const Profile = () => {
             onChange={handleChange}
           />
         </div>
-        <div className='address'>
-          {/* Address input */}
+        {/* ====================Box Divider=============*/}
+        <div className='box-2'>
+          <GooglePlacesHook state={state} setState={setState} />
+          <div className='box-2-inline'>
+            {/* apartment  */}
+            <FormInput
+              name='apartment'
+              label={'Apartment Number'}
+              placeholder={'#'}
+              value={state?.apartment}
+              onChange={handleChange}
+            />
+            {/* houseNo/buildingNo  */}
+            <FormInput
+              name='house'
+              placeholder={'#'}
+              label={'House / Building #'}
+              value={state?.house}
+              onChange={handleChange}
+            />
+          </div>
+          {/* street*/}
           <FormInput
-            name={'address'}
-            value={state.address}
+            name='street'
+            label={'Street Address'}
+            value={state?.street}
             onChange={handleChange}
           />
-          {/* City input */}
-          <FormInput name={'city'} value={state.city} onChange={handleChange} />
-          {/* province input */}
-          <FormInput
-            name={'province'}
-            value={state.province}
-            onChange={handleChange}
-          />
-          {/* postalCode input */}
-          <FormInput
-            label={'postal code'}
-            name={'postalCode'}
-            value={state.postalCode}
-            onChange={handleChange}
-          />
+          <div className='box-2-inline'>
+            {/* city  */}
+            <FormInput
+              name='city'
+              value={state?.city}
+              onChange={handleChange}
+            />
+            {/* province */}
+            <FormInput
+              name='province'
+              value={state?.province}
+              onChange={handleChange}
+            />
+          </div>
+          {/* country */}
+          <div className='box-2-inline'>
+            <FormInput
+              name='country'
+              value={state?.country}
+              onChange={handleChange}
+            />
+            {/* postalCode */}
+            <FormInput
+              name='postalCode'
+              label='Postal Code'
+              value={state?.postalCode}
+              onChange={handleChange}
+            />
+          </div>
 
-          <button type='submit' className='btn'>
-            Update Profile
+          <button className='btn' type='submit'>
+            Submit
           </button>
         </div>
       </form>
@@ -168,6 +232,15 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
+  select,
+  input {
+    text-transform: capitalize;
+  }
+  .gender {
+    padding: 5px 0;
+    display: grid;
+  }
+
   @media (min-width: 600px) {
     form {
       display: grid;
@@ -175,6 +248,11 @@ const Wrapper = styled.div`
       gap: 1rem;
       min-width: 800px;
     }
+  }
+  .box-2-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
   }
 `
 

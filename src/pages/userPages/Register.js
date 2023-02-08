@@ -1,41 +1,62 @@
-import { React, useState, useRef } from 'react'
+import { React, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import {
   forgetPasswordToggle,
+  getStateValue,
   loginUserThunk,
   registerUserThunk,
 } from '../../features/user/userSlice'
 import ForgetPassword from '../../components/user/ForgetPassword'
 import { Helmet } from 'react-helmet-async'
+import FormInput from '../../components/FormInput'
+const genderValue = [
+  'male',
+  'female',
+  'transgender',
+  'non-binary/non-conforming',
+  'prefer not to respond',
+]
 
 const Register = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state)
-
   const [login, setLogin] = useState(true)
-  const nameRef = useRef()
-  const emailRef = useRef()
-  const passwordRef = useRef()
+  const { name, lastName, email, password, dateOfBirth, gender } = user
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const name = nameRef.current?.value.toLowerCase()
-    const email = emailRef.current.value.toLowerCase()
-    const password = passwordRef.current.value
-
-    if (!email || !password || (!login && !name)) {
-      toast.error('Please enter your credentials.')
-      return
-    }
     if (login) {
+      if (!email) return toast.error('please enter your Email.')
+      if (!password) return toast.error('please enter your Password.')
       dispatch(loginUserThunk({ email, password }))
       return
     } else {
-      dispatch(registerUserThunk({ name, email, password }))
+      if (!name) return toast.error('please enter your First Name.')
+      if (!lastName) return toast.error('please enter your Last Name.')
+      if (!dateOfBirth) return toast.error('please enter your Date Of Birth.')
+      if (!gender) return toast.error('please enter your Gender.')
+      if (!email) return toast.error('please enter your Email.')
+      if (!password) return toast.error('please enter your Password.')
+      dispatch(
+        registerUserThunk({
+          name,
+          lastName,
+          email,
+          password,
+          dateOfBirth,
+          gender,
+        })
+      )
     }
+  }
+  // handle Change
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    dispatch(getStateValue({ name, value }))
   }
   // handle Login
   const handleLogin = () => {
@@ -69,25 +90,72 @@ const Register = () => {
         <ForgetPassword />
       ) : (
         <form className='form' onSubmit={handleSubmit}>
-          {/* name input */}
+          {/* Registration form logic */}
           {!login && (
             <div>
-              <label className='form-label' htmlFor='name'>
-                Name
-              </label>
-              <input className='form-input' ref={nameRef} type='text' />
+              <div className='name-lastName'>
+                <FormInput
+                  name='name'
+                  label={'First Name'}
+                  value={user.name}
+                  onChange={handleChange}
+                />
+                <FormInput
+                  name='lastName'
+                  label={'Last Name'}
+                  value={user.lastName}
+                  onChange={handleChange}
+                />
+              </div>
+              {/* date of birth */}
+              <div className='date-input'>
+                <FormInput
+                  label={'Date Of Birth'}
+                  name='dateOfBirth'
+                  type='date'
+                  value={user?.dateOfBirth ? user.dateOfBirth : ''}
+                  onChange={handleChange}
+                />
+              </div>
+              {/* gender */}
+              <div className='gender'>
+                <label htmlFor='gender'>Gender</label>
+                <select
+                  name='gender'
+                  value={user?.gender}
+                  onChange={handleChange}
+                >
+                  {genderValue.map((item, index) => {
+                    return (
+                      <option
+                        select={user?.gender?.toString()}
+                        key={index}
+                        value={item}
+                      >
+                        {item}
+                      </option>
+                    )
+                  })}
+                </select>
+              </div>
             </div>
           )}
+          {/* Login form logic below */}
+          <div className='login'>
+            <FormInput
+              name='email'
+              value={user.email}
+              onChange={handleChange}
+            />
+            <FormInput
+              name='password'
+              type={'password'}
+              value={user.password}
+              onChange={handleChange}
+            />
+          </div>
           {/* email input */}
-          <label className='form-label' htmlFor='email'>
-            Email
-          </label>
-          <input className='form-input' ref={emailRef} type='text' />
-          {/* name input */}
-          <label className='form-label' htmlFor='password'>
-            Password
-          </label>
-          <input className='form-input' ref={passwordRef} type='password' />
+
           {/* login in log out buttons */}
           <div className='login-register'>
             {login ? (
@@ -127,6 +195,24 @@ const Wrapper = styled.div`
   min-height: calc(100vh - 3.2rem);
   form {
     margin-top: 6rem;
+  }
+  .name-lastName {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .date-input {
+    input {
+      text-transform: uppercase;
+    }
+  }
+  select {
+    text-transform: capitalize;
+  }
+  .gender {
+    padding: 5px 0;
+    display: grid;
   }
   .login-button {
     background: var(--grey-3);
